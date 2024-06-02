@@ -1,4 +1,5 @@
 const express = require('express');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const mongoose = require('mongoose');
 
 const app = express();
@@ -10,9 +11,12 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 // database connection
-const dbURI = 'mongodb+srv://shaun:test1234@cluster0.del96.mongodb.net/node-auth';
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
-  .then((result) => app.listen(3000))
+const dbURI = 'mongodb+srv://Bam29:idder1234@nodetuts.tkjwfon.mongodb.net/node-tuts?retryWrites=true&w=majority&appName=nodetuts';
+
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+  .then((result) => app.listen(3000, () => {
+    console.log("sever is runing")
+  }))
   .catch((err) => console.log(err));
 
 // routes
